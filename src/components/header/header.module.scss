@@ -1,0 +1,22 @@
+.header {
+    height:130px;
+    background: -webkit-gradient(linear,left top,right top,from(#cb11ab),to(#481173)) no-repeat;
+    width:100%;
+
+
+    &__cart {
+        width:55px;  
+    }
+    &__home {
+        width:48px;
+    }
+
+
+
+    &__menu {
+        display: flex;
+        gap:25px;
+        padding-left:20px;
+        padding-top: 28px;
+    }
+}
