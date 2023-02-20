@@ -90,9 +90,9 @@ export const Items = () => {
             <div
               onClick={() => handleClick(item)}
               className={style.itemlist__addtoCart}
-            ><p>добавить в корзину</p>
+            ><p>Add to cart</p>
             </div>
-            <div onClick={() => handleInfo(item)} className={style.itemlist__info} >Подробнее</div>
+            <div onClick={() => handleInfo(item)} className={style.itemlist__info} >About</div>
           </div>
         ))}
       </div>

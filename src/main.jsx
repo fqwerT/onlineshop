@@ -1,20 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import './common.css'
-import './reset.css'
-import { Root } from "./routes/root/root";
-import { Order } from "./routes/order/order";
-import { Cart } from "./routes/cart/cart";
+import "./common.css";
+import "./reset.css";
 import { store } from "./store/store";
-import { Provider } from 'react-redux'
-import { CurrentItem } from "./components/itempage/itemPage";
-
-
+import { Provider } from "react-redux";
+import { CurrentItem } from "./components/CurrentItem/CurrentItem";
+import { MainPage } from "./Pages/MainPage/MainPage";
+import { Cart } from "./Pages/Cart/cart";
+import { Order } from "./Pages/Order/Order";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <MainPage/>,
   },
   {
     path: "/cart",
@@ -26,7 +24,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/item",
-    element: <CurrentItem/>,
+    element: <CurrentItem />,
   },
 ]);
 
@@ -34,7 +32,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-   <RouterProvider router={router} />
+    <RouterProvider router={router} />
   </Provider>
-  
 );

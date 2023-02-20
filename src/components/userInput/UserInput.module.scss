@@ -1,0 +1,57 @@
+.userInput {
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    &__message {
+        margin: 15px;
+        font-size: 35px;
+        color: #cb11ab;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    &__input {
+        margin: 10px;
+        height: 35px;
+        width: 235px;
+    }
+
+    &__error {
+        text-transform: uppercase;
+        color: red;
+        font-size: 25px;
+        position: absolute;
+        bottom: -60px;
+        text-align: center;
+    }
+
+    &__btn {
+        background-color: #cb11ab;
+        border: 2px solid #cb11ab;
+        color: white;
+        font-size: 'Roboto';
+        width: 180px;
+        height: 35px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+
+        &:hover {
+            transform: scale(1.1);
+            transition-duration: 0.5s;
+            background-color: #a70f8d;
+
+        }
+    }
+
+
+}

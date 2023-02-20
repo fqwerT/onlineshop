@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import style from "./cart.module.scss";
-import { Header } from "../../components/header/header";
+import style from "./Cart.module.scss";
+import { Header } from "../../components/Header/Header";
 import { useDispatch } from "react-redux";
 import { setIncrementReducer } from "../../store/items/itemsSlice";
 import { setDecrementReducer } from "../../store/items/itemsSlice";
@@ -65,6 +65,8 @@ export const Cart = () => {
           </div>
         )}
       </div>
+
+      {Cart.length !== 0 ? <Link to="/Order">Order now</Link> : <div></div>}
     </div>
   );
 };

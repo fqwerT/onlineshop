@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import itemsSlice from "../../store/items/itemsSlice";
 import { Link } from "react-router-dom";
-import style from './item.module.scss'
+import style from './CurrentItem.module.scss'
 export const CurrentItem = () => {
   const current = useSelector((state) => state.itemsSlice.currentItem);
   return (

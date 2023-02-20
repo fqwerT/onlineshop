@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import style from "./header.module.scss";
-import { InputSearch } from "../inputSearch/input";
+import { InputSearch } from "../InputSearch/Input";
 import img from "../../assets/imgs/shopping-cart.png";
 import img2 from "../../assets/imgs/home.png";
 export const Header = () => {
@@ -14,10 +14,11 @@ export const Header = () => {
         <Link to="/">
           <img src={img2} className={style.header__home} />
         </Link>
+        <div>
+        <InputSearch />
       </div>
-      <div>
-        <inputSearch />
       </div>
+     
     </div>
   );
 };
