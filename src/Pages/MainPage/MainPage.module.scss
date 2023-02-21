@@ -1,3 +1,20 @@
-.root {
+.MainPage {
     height:100%;
+   &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+    &__filterContainer {
+        display: flex;
+        flex-direction: column;
+        height:100%;
+        align-items: center;
+        justify-content: center;
+        width:20%;
+    }
+    &__container {
+        display: flex;
+        flex-direction: row;
+    }
 }

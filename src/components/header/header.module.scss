@@ -2,24 +2,22 @@
     height:130px;
     background: -webkit-gradient(linear,left top,right top,from(#cb11ab),to(#481173)) no-repeat;
     width:100%;
-
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &__cart {
         width:55px;  
+        position: absolute;
+        top:10px;
+        left:30px;
     }
     &__home {
         width:48px;
+        position: absolute;
+        top:10px;
+        right:30px;
     }
 
-
-
-    &__menu {
-        display: flex;
-        gap:25px;
-        padding-left:20px;
-        padding-top: 28px;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-    }
 }

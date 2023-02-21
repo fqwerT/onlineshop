@@ -14,12 +14,14 @@ export const Order = () => {
     surname: state.clientSlice.surname,
     valid: state.clientSlice.valid,
   }));
-
+  ymaps.modules.require(['PlacemarkButton'])
+  .spread(function (PlacemarkButton) {
+    myMap.controls.add(new PlacemarkButton('Кликните, чтобы добавить метку'));
+});
   return (
     <div className={style.order}>
       <Header/>
-      {valid ? <CreditCard Name={name} SurName={surName}/> : <UserInput />}
-      <UserAdress/>
+      {valid ? <CreditCard Name={name} SurName={surName}/> : (<div><UserInput /><UserAdress/></div>)}
     </div>
   );
 };

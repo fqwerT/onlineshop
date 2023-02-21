@@ -1,0 +1,37 @@
+.map {
+    margin:50px;
+    border-radius: 12px;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+    &__input {
+        margin: 10px;
+            height: 35px;
+            width: 295px;
+    }
+
+    &__button {
+        background-color: #cb11ab;
+        border: 2px solid #cb11ab;
+        color: white;
+        font-size: 'Roboto';
+        width: 180px;
+        height: 35px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: 10px;
+        &:hover {
+            transform: scale(1);
+            transition-duration: 0.5s;
+            background-color: #a70f8d;
+
+        }
+    }
+
+    &__inputMenu {
+        display: flex;
+        flex-direction: row;
+        column-gap: 1%;
+    }
+}

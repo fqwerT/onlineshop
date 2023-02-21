@@ -3,12 +3,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
+    padding-top: 3%;
+    
     
     &__container {
         text-align: center;
-        font-family: 'Roboto', sans-serif;   
-        gap:11%;
+        justify-content: center;
+        font-family: 'Roboto', sans-serif; 
+        flex-wrap: wrap;  
+        gap:6%;
         letter-spacing: 0.4;
         display: flex;
         
@@ -20,17 +23,22 @@
         background-color: #fc0;
         border-radius: 13px;
         padding:8px;
+        user-select: none;
     }
 
     &__card {
-        margin:15px
+        margin:5px;
+        max-width:190px;
     }
 
     &__name {
         letter-spacing: 1px;
         text-transform: uppercase;
         font-weight: 800;
-        margin:5px
+        margin:5px;
+        white-space: nowrap;
+        font-size: 13px;
+        color: #9d9da5;
     }
 
     &__price {

@@ -28,11 +28,9 @@ export const InputSearch = () => {
   const handleInfo = (item) => {
     dispatch(setCurrentReducer(item));
     navigate("/item");
-    console.log(current);
   };
   return (
     <div className={style.input}>
-      <div>
         <form className={style.input__form}>
           <input
             className={style.input__field}
@@ -40,34 +38,23 @@ export const InputSearch = () => {
             onChange={(e) => handleChange(e)}
             value={searchTerm}
           />
+          </form>
           <div className={style.input__searchResultMini}>
             {active &&
               results.map((item) => (
-                <div>
-                  <div className={style.input__searchResultMini__text}>
-                    <h1>
-                      {item.name}/{item.model}
-                    </h1>
-                    <h1>{item.color}</h1>
-                    <h1>{item.price} ₽</h1>
-                  </div>
-                  <div>
-                    <img
-                      src={item.url}
-                      className={style.input__searchResultMini__img}
-                    />
-                  </div>
-                  <div
-                    onClick={() => handleInfo(item)}
-                    className={style.itemlist__info}
-                  >
-                    About
+                <div className={style.input__searchResultMini_card} onClick={()=>handleInfo(item)}>
+                  <div className={style.input__searchResultMini__box}>
+                    <div >
+                      <h1 className={style.input__searchResultMini__name}>
+                        {item.name}/{item.model}
+                      </h1>
+                    </div>
                   </div>
                 </div>
               ))}
           </div>
-        </form>
+          
+         
       </div>
-    </div>
   );
 };

@@ -16,6 +16,8 @@ export const Items = () => {
   const current = useSelector((state) => state.itemsSlice.currentItem);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
+ 
   const supabase = createClient(
     "https://vlkqvnmhxlmmehqfnmrm.supabase.co",
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZsa3F2bm1oeGxtbWVocWZubXJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzY2MzAwMzgsImV4cCI6MTk5MjIwNjAzOH0.f78nrRWPi3c-Fi8qyJk7g1KaAZZRg-sq4ceyW-i91pU"
@@ -86,12 +88,12 @@ export const Items = () => {
              <h1 className={style.itemlist__name}>
               {item.name} / {item.model}
             </h1>
-            <h1 className={style.itemlist__price} >{item.price} ₽</h1>
             <div
               onClick={() => handleClick(item)}
               className={style.itemlist__addtoCart}
             ><p>Add to cart</p>
             </div>
+            <h1 className={style.itemlist__price} >{item.price} ₽</h1>
             <div onClick={() => handleInfo(item)} className={style.itemlist__info} >About</div>
           </div>
         ))}

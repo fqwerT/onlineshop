@@ -7,6 +7,8 @@ import img2 from "../../assets/imgs/home.png";
 export const Header = () => {
   return (
     <div className={style.header}>
+        <InputSearch />
+
       <div className={style.header__menu}>
         <Link to="/cart">
           <img className={style.header__cart} src={img} />
@@ -14,11 +16,7 @@ export const Header = () => {
         <Link to="/">
           <img src={img2} className={style.header__home} />
         </Link>
-        <div>
-        <InputSearch />
       </div>
-      </div>
-     
     </div>
   );
 };

@@ -16,6 +16,10 @@ export const CreditCard = ({ Name, SurName }) => {
     dispatch(setValidReducer(false));
   };
 
+  const Next = () => {
+    dispatch(setValidReducer(false));
+  };
+
   return (
     <div className={style.creditCard}>
       <h1 className={style.creditCard__message}>

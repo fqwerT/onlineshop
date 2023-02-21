@@ -1,14 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./common.css";
-import "./reset.css";
+import "./assets/styles/common.css";
+import "./assets/styles/reset.css";
 import { store } from "./store/store";
 import { Provider } from "react-redux";
 import { CurrentItem } from "./components/CurrentItem/CurrentItem";
 import { MainPage } from "./Pages/MainPage/MainPage";
 import { Cart } from "./Pages/Cart/cart";
 import { Order } from "./Pages/Order/Order";
+import { Categories } from "./Pages/Categories/Categories";
+import { ChoosenCategory } from "./components/ChosenCategory/ChoosenCategory";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +28,15 @@ const router = createBrowserRouter([
     path: "/item",
     element: <CurrentItem />,
   },
+  {
+   path: "/catergories",
+   element: <Categories/>,
+   
+  },
+  {
+    path: "/ChoosenCatergory",
+    element: <ChoosenCategory/>,
+   }
 ]);
 
 //не забыть сделать вложенный роут вместо этих(как в тз)
