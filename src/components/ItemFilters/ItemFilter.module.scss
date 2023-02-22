@@ -16,7 +16,7 @@
         border-radius: 12px;
         min-width:215px;
         margin:15px;
-        font-size: 23px;
+        
         text-transform: uppercase;
         letter-spacing: 3px;
         white-space: pre;
@@ -50,7 +50,7 @@
         border-radius: 12px;
     }
 
-    &__color__btn {
+    &__header {
         user-select: none;
         cursor: pointer;
         font-family:'Montserrat', sans-serif ;
@@ -66,6 +66,18 @@
         text-align: center;
 
     }
+    &__color__btn {
+        user-select: none;
+        cursor: pointer;
+        font-weight: 600;
+        border-radius: 12px;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        text-align: center;
+        font-family: 'Roboto';
+        font-weight: 800;
+        }
 
     &__price__up {
         font-family:'Montserrat', sans-serif ;

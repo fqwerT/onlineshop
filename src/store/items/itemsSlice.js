@@ -8,7 +8,9 @@ const initialState = {
   currentItem: null,
   quantity: 1,
   itemsPrice: [],
-  filteredItems:[]
+  filteredItems:[],
+  fillteredColor:[],
+  colors:[]
 };
 
 const itemsSlice = createSlice({
@@ -28,11 +30,11 @@ const itemsSlice = createSlice({
       state.currentItem = action.payload;
     },
     setIncrementReducer(state, action) {
-      return { ...state, quantity: state.quantity + 1 };
+      state.quantity = state.quantity + 1 
     },
     setDecrementReducer(state, action) {
       if (state.quantity > 0) {
-        return { ...state, quantity: state.quantity - 1 };
+         state.quantity = state.quantity - 1 
       }
     },
     setItemsPriceReducer(state, action) {
@@ -43,7 +45,16 @@ const itemsSlice = createSlice({
     },
     setChangeItems(state,action){
       state.filteredItems = state.items
-    }
+    },
+    setFilteredColor(state,action){
+      state.filteredItems = state.filteredItems.filter((item) => item.color == action.payload)
+    },
+    setColorsReducer(state,action){
+      state.colors = state.filteredItems.map((item)=> item.color)
+    },
+    setRemoveDuplicates(state,action){
+      state.colors = [...new Set(state.colors)];
+    },
   },
 });
 
@@ -56,6 +67,9 @@ export const {
   setDecrementReducer,
   setItemsPriceReducer,
   setFilteredPrice,
-  setChangeItems
+  setChangeItems,
+  setFilteredColor,
+  setRemoveDuplicates,
+  setColorsReducer
 } = itemsSlice.actions;
 export default itemsSlice.reducer;

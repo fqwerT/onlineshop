@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { setItemsReducer } from "../../store/items/itemsSlice";
 import { setCartReducer } from "../../store/items/itemsSlice";
@@ -9,6 +9,7 @@ import { setCurrentReducer } from "../../store/items/itemsSlice";
 import style from "./items.module.scss";
 import { setChangeItems } from "../../store/items/itemsSlice";
 import { SupaBase__Link } from "../../service/supaBase";
+
 export const Items = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -26,7 +27,6 @@ export const Items = () => {
     const values = await SupaBase__Link.from("shoptest").select();
     dispatch(setItemsReducer(values.data));
   }
-
   useEffect(() => {
     getItems();
   }, []);
@@ -69,18 +69,17 @@ export const Items = () => {
     });
     return dispatch(setFillteredReducer(result));
   };
-
+  
   const handleClick = (item) => {
     dispatch(setCartReducer(item));
     removeDuplicates(cart);
-  };
+  }
 
   const handleInfo = (item) => {
     dispatch(setCurrentReducer(item));
     navigate("/item");
   };
-
-  console.log(fillItems);
+  
   return (
     <div className={style.itemlist}>
       <div className={style.itemlist__container}>
