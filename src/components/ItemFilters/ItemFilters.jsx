@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useCallback,
+  useRef,
+  createRef,
+} from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -20,7 +26,7 @@ export const Filters = () => {
     colors: state.itemsSlice.colors,
   }));
   const [firstItem] = price.slice(0);
-  const [currentPrice, setCurrentPrice] = useState([firstItem]);
+  const [currentPrice, setCurrentPrice] = useState(5000);
   const arrPrice = items.map((item) => item.price);
   const newPriceArr = arrPrice.sort(function (a, b) {
     return a - b;
@@ -30,7 +36,7 @@ export const Filters = () => {
     setCurrentPrice(event.target.value);
     console.log(event.target.value);
   };
-
+  const ref = useRef(null);
   useEffect(() => {
     dispatch(setItemsPriceReducer(newPriceArr));
     dispatch(setColorsReducer());
@@ -54,10 +60,21 @@ export const Filters = () => {
     },
     [currentPrice]
   );
+  console.log(price);
+
+  const handleShowColorFilters = () => {
+    const elem = ref.current;
+    ref.current.classList.toggle(`${style.fillters__show}`);
+  };
 
   return (
     <div className={style.fillters}>
       <div className={style.fillters__price}>
+        {activeFillter && (
+          <h1 onClick={removeApply} className={style.fillters__btn}>
+            Reset all
+          </h1>
+        )}
         <h1 className={style.fillters__header}>
           price up to : {currentPrice}₽
         </h1>
@@ -72,25 +89,21 @@ export const Filters = () => {
         <h1 onClick={handleApplyPrice} className={style.fillters__btn}>
           Apply
         </h1>
-        {activeFillter && (
-          <h1 onClick={removeApply} className={style.fillters__btn}>
-            remove{" "}
-          </h1>
-        )}
       </div>
       <div className={style.fillters__color}>
-        <h1 className={style.fillters__header}>color</h1>
-        {colors.map((item) => (
-          <h1
-            className={style.fillters__color__btn}
-            onClick={() => handleApplyColor(item)}
-          >
-            {item}
-          </h1>
-        ))}
-        <h1 onClick={removeApply} className={style.fillters__btn}>
-          remove{" "}
+        <h1 className={style.fillters__header} onClick={handleShowColorFilters}>
+          color
         </h1>
+        <div className={style.fillters__hide} ref={ref}>
+          {colors.map((item) => (
+            <h1
+              className={style.fillters__color__btn}
+              onClick={() => handleApplyColor(item)}
+            >
+              {item}
+            </h1>
+          ))}
+        </div>
       </div>
 
       <div className={style.fillters__toCategory__btn}>
