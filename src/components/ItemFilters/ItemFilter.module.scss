@@ -1,0 +1,101 @@
+.fillters {
+    display: flex;
+    flex-direction: column;
+    float: left;
+    justify-content: center;
+    padding-left: 50px;
+
+    
+    &__price {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap:25px;
+        padding: 15px;
+        border-radius: 12px;
+        min-width:215px;
+        margin:15px;
+        font-size: 23px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        white-space: pre;
+        text-align: center;
+       
+    }
+
+    &__color {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap:25px;
+        padding: 15px;
+        border-radius: 12px;
+        min-width:190px;
+        margin:15px;
+    }
+
+    &__btn {
+        user-select: none;
+        cursor: pointer;
+        font-family:'Montserrat', sans-serif ;
+        font-weight: 600;
+        color:#cb11ab;
+        border: 2px solid #cb11ab;
+        padding-left: 10px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        padding-right: 10px;
+        border-radius: 12px;
+    }
+
+    &__color__btn {
+        user-select: none;
+        cursor: pointer;
+        font-family:'Montserrat', sans-serif ;
+        font-weight: 600;
+        padding-left: 10px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        padding-right: 10px;
+        border-radius: 12px;
+        font-size: 23px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        text-align: center;
+
+    }
+
+    &__price__up {
+        font-family:'Montserrat', sans-serif ;
+    }
+
+    &__toCategory__btn {
+        user-select: none;
+        cursor: pointer;
+        font-family:'Montserrat', sans-serif ;
+        font-weight: 600;
+        padding-left: 10px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        padding-right: 10px;
+        border-radius: 12px;
+        font-size: 23px;
+        display: flex;
+        justify-content: center;
+        text-decoration: none;
+        margin:15px;
+       
+        }
+
+    &__toCategory__link {
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color:black;
+        text-align: center;
+    }
+
+    
+}

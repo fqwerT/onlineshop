@@ -1,11 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const initialState = {
   items: [],
   cart: [],
   fillterCart: [],
   currentItem: null,
   quantity: 1,
+  itemsPrice: [],
+  filteredItems:[]
 };
 
 const itemsSlice = createSlice({
@@ -24,16 +27,23 @@ const itemsSlice = createSlice({
     setCurrentReducer(state, action) {
       state.currentItem = action.payload;
     },
-
     setIncrementReducer(state, action) {
-      return { ...state, quantity: state.quantity + 1 }
+      return { ...state, quantity: state.quantity + 1 };
     },
     setDecrementReducer(state, action) {
-      if(state.quantity > 0) {
-        return { ...state, quantity: state.quantity - 1 }
+      if (state.quantity > 0) {
+        return { ...state, quantity: state.quantity - 1 };
       }
-        
     },
+    setItemsPriceReducer(state, action) {
+      state.itemsPrice = action.payload;
+    },
+    setFilteredPrice(state,action){
+      state.filteredItems = state.filteredItems.filter((item) => item.price <= action.payload)
+    },
+    setChangeItems(state,action){
+      state.filteredItems = state.items
+    }
   },
 });
 
@@ -44,5 +54,8 @@ export const {
   setCurrentReducer,
   setIncrementReducer,
   setDecrementReducer,
+  setItemsPriceReducer,
+  setFilteredPrice,
+  setChangeItems
 } = itemsSlice.actions;
 export default itemsSlice.reducer;

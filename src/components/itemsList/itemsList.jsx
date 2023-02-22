@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { createClient } from "@supabase/supabase-js";
 import { useDispatch } from "react-redux";
 import { setItemsReducer } from "../../store/items/itemsSlice";
 import { setCartReducer } from "../../store/items/itemsSlice";
@@ -8,28 +7,35 @@ import { setFillteredReducer } from "../../store/items/itemsSlice";
 import { useNavigate } from "react-router-dom";
 import { setCurrentReducer } from "../../store/items/itemsSlice";
 import style from "./items.module.scss";
-
+import { setChangeItems } from "../../store/items/itemsSlice";
+import { SupaBase__Link } from "../../service/supaBase";
 export const Items = () => {
-  const cart = useSelector((state) => state.itemsSlice.cart);
-  const items = useSelector((state) => state.itemsSlice.items);
-  const fillterCart = useSelector((state) => state.itemsSlice.fillterCart);
-  const current = useSelector((state) => state.itemsSlice.currentItem);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
- 
-  const supabase = createClient(
-    "https://vlkqvnmhxlmmehqfnmrm.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZsa3F2bm1oeGxtbWVocWZubXJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzY2MzAwMzgsImV4cCI6MTk5MjIwNjAzOH0.f78nrRWPi3c-Fi8qyJk7g1KaAZZRg-sq4ceyW-i91pU"
+  const { cart, items, fillItems, fillterCart, current } = useSelector(
+    (state) => ({
+      cart: state.itemsSlice.cart,
+      items: state.itemsSlice.items,
+      fillItems: state.itemsSlice.filteredItems,
+      fillterCart: state.itemsSlice.fillterCart,
+      current: state.itemsSlice.currentItem,
+    })
   );
+
   async function getItems() {
-    const values = await supabase.from("shoptest").select();
+    const values = await SupaBase__Link.from("shoptest").select();
     dispatch(setItemsReducer(values.data));
   }
 
-  getItems();
+  useEffect(() => {
+    getItems();
+  }, []);
 
-  function removeDuplicates(arr) {
+  useEffect(() => {
+    dispatch(setChangeItems());
+  }, [items]);
+
+  const removeDuplicates = (arr) => {
     const result = [];
     const duplicatesIndices = [];
     arr.forEach((current, index) => {
@@ -62,7 +68,7 @@ export const Items = () => {
       }
     });
     return dispatch(setFillteredReducer(result));
-  }
+  };
 
   const handleClick = (item) => {
     dispatch(setCartReducer(item));
@@ -72,31 +78,43 @@ export const Items = () => {
   const handleInfo = (item) => {
     dispatch(setCurrentReducer(item));
     navigate("/item");
-    console.log(current);
   };
+
+  console.log(fillItems);
   return (
     <div className={style.itemlist}>
       <div className={style.itemlist__container}>
-        {items.map((item) => (
-          <div className={style.itemlist__card}>
-           
-            <img
-              src={item.url}
-              alt={item.name}
-              className={style.itemlist__img}
-            />
-             <h1 className={style.itemlist__name}>
-              {item.name} / {item.model}
-            </h1>
-            <div
-              onClick={() => handleClick(item)}
-              className={style.itemlist__addtoCart}
-            ><p>Add to cart</p>
-            </div>
-            <h1 className={style.itemlist__price} >{item.price} ₽</h1>
-            <div onClick={() => handleInfo(item)} className={style.itemlist__info} >About</div>
+        {fillItems.length == 0 ? (
+          <div>
+            <h1>not found</h1>
           </div>
-        ))}
+        ) : (
+          fillItems.map((item) => (
+            <div className={style.itemlist__card}>
+              <img
+                src={item.url}
+                alt={item.name}
+                className={style.itemlist__img}
+              />
+              <h1 className={style.itemlist__name}>
+                {item.name} / {item.model}
+              </h1>
+              <div
+                onClick={() => handleClick(item)}
+                className={style.itemlist__addtoCart}
+              >
+                <p>Add to cart</p>
+              </div>
+              <h1 className={style.itemlist__price}>{item.price} ₽</h1>
+              <div
+                onClick={() => handleInfo(item)}
+                className={style.itemlist__info}
+              >
+                About
+              </div>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
