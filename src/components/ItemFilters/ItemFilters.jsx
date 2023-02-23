@@ -3,7 +3,6 @@ import React, {
   useEffect,
   useCallback,
   useRef,
-  createRef,
 } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -43,10 +42,10 @@ export const Filters = () => {
     dispatch(setRemoveDuplicates());
   }, [items, filtered]);
 
-  const handleApplyPrice = useCallback(() => {
+   useEffect(() => {
     dispatch(setFilteredPrice(currentPrice));
     setActiveFillter(true);
-  }, [currentPrice]);
+  }, [currentPrice,items]);
 
   const removeApply = useCallback(() => {
     dispatch(setChangeItems());
@@ -66,7 +65,8 @@ export const Filters = () => {
     const elem = ref.current;
     ref.current.classList.toggle(`${style.fillters__show}`);
   };
-
+  
+  console.log(items)
   return (
     <div className={style.fillters}>
       <div className={style.fillters__price}>
@@ -86,9 +86,6 @@ export const Filters = () => {
           step={1}
           value={[currentPrice]}
         ></input>
-        <h1 onClick={handleApplyPrice} className={style.fillters__btn}>
-          Apply
-        </h1>
       </div>
       <div className={style.fillters__color}>
         <h1 className={style.fillters__header} onClick={handleShowColorFilters}>
@@ -105,7 +102,6 @@ export const Filters = () => {
           ))}
         </div>
       </div>
-
       <div className={style.fillters__toCategory__btn}>
         <Link className={style.fillters__toCategory__link} to="/catergories">
           brand

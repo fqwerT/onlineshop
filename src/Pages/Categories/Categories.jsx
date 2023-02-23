@@ -41,14 +41,6 @@ export const Categories = () => {
     navigate("/ChoosenCatergory");
   };
 
-  const { category } = useSelector((state) => ({
-    category: state.categorySlice.choosenCategory,
-  }));
-
-  const  {categoryItems } = useSelector((state) => ({
-    categoryItems: state.categorySlice.categoryItems,
-  }));
-
   return (
     <div className={style.category}>
       <Header />
@@ -66,8 +58,6 @@ export const Categories = () => {
             </div>
           ))}
         </div>
-
-        
       </div>
     </div>
   );

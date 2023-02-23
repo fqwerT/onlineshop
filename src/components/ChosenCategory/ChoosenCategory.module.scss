@@ -1,0 +1,22 @@
+.Choosen {
+    height: 100%;
+
+
+    &__items {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+       
+    }
+
+    &__img {
+        width: 300px;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: row;
+        gap:10%;
+    }
+}

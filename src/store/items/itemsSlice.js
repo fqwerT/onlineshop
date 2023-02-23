@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const initialState = {
   items: [],
   cart: [],
@@ -8,9 +7,9 @@ const initialState = {
   currentItem: null,
   quantity: 1,
   itemsPrice: [],
-  filteredItems:[],
-  fillteredColor:[],
-  colors:[]
+  filteredItems: [],
+  fillteredColor: [],
+  colors: [],
 };
 
 const itemsSlice = createSlice({
@@ -30,29 +29,33 @@ const itemsSlice = createSlice({
       state.currentItem = action.payload;
     },
     setIncrementReducer(state, action) {
-      state.quantity = state.quantity + 1 
+      state.quantity = state.quantity + 1;
     },
     setDecrementReducer(state, action) {
       if (state.quantity > 0) {
-         state.quantity = state.quantity - 1 
+        state.quantity = state.quantity - 1;
       }
     },
     setItemsPriceReducer(state, action) {
       state.itemsPrice = action.payload;
     },
-    setFilteredPrice(state,action){
-      state.filteredItems = state.filteredItems.filter((item) => item.price <= action.payload)
+    setFilteredPrice(state, action) {
+      state.filteredItems = state.items.filter(
+        (item) => item.price <= action.payload
+      );
     },
-    setChangeItems(state,action){
-      state.filteredItems = state.items
+    setChangeItems(state, action) {
+      state.filteredItems = state.items;
     },
-    setFilteredColor(state,action){
-      state.filteredItems = state.filteredItems.filter((item) => item.color == action.payload)
+    setFilteredColor(state, action) {
+      state.filteredItems = state.filteredItems.filter(
+        (item) => item.color == action.payload
+      );
     },
-    setColorsReducer(state,action){
-      state.colors = state.filteredItems.map((item)=> item.color)
+    setColorsReducer(state, action) {
+      state.colors = state.filteredItems.map((item) => item.color);
     },
-    setRemoveDuplicates(state,action){
+    setRemoveDuplicates(state, action) {
       state.colors = [...new Set(state.colors)];
     },
   },
@@ -70,6 +73,6 @@ export const {
   setChangeItems,
   setFilteredColor,
   setRemoveDuplicates,
-  setColorsReducer
+  setColorsReducer,
 } = itemsSlice.actions;
 export default itemsSlice.reducer;

@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   name: null,
   surname: null,
-  valid:false,
-  adress:null
+  valid: false,
+  adress: null,
 };
 
 const clientSlice = createSlice({
@@ -26,5 +26,10 @@ const clientSlice = createSlice({
   },
 });
 
-export const { setNameReducer, setSurnameReducer,setValidReducer,setAdressReducer } = clientSlice.actions;
+export const {
+  setNameReducer,
+  setSurnameReducer,
+  setValidReducer,
+  setAdressReducer,
+} = clientSlice.actions;
 export default clientSlice.reducer;

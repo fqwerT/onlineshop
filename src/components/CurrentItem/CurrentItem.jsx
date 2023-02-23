@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import itemsSlice from "../../store/items/itemsSlice";
 import { Link } from "react-router-dom";
 import style from "./CurrentItem.module.scss";
@@ -7,11 +7,14 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { setCartReducer } from "../../store/items/itemsSlice";
 import { setFillteredReducer } from "../../store/items/itemsSlice";
+import YouTube from "react-youtube";
+import { YouTubeOptions } from "../../service/youTubeOptions";
 export const CurrentItem = () => {
   const current = useSelector((state) => state.itemsSlice.currentItem);
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.itemsSlice.cart);
-
+  const ref = useRef(null);
+  const ref2 = useRef(null);
   const removeDuplicates = (arr) => {
     const result = [];
     const duplicatesIndices = [];
@@ -50,6 +53,13 @@ export const CurrentItem = () => {
     dispatch(setCartReducer(item));
     removeDuplicates(cart);
   };
+
+  const handleShowPlayer = () => {
+    const elem = ref.current;
+    ref.current.classList.toggle(`${style.itemPage__show}`);
+    ref2.current.classList.toggle(`${style.itemPage__active}`);
+  };
+
   return (
     <div className={style.itemPage}>
       <Header />
@@ -77,6 +87,17 @@ export const CurrentItem = () => {
             </div>
           </div>
         </div>
+        <div onClick={handleShowPlayer} className={style.itemPage__btnContainer}>
+          <h1 className={style.itemPage__btnText} >Show youtube review</h1>
+        </div>
+      </div>
+      <div className={style.itemPage__player} ref={ref}>
+        <div>
+          <h1 className={style.itemPage__playerHeader} ref={ref2}>
+            watch the review on youtube
+          </h1>
+        </div>
+        <YouTube videoId={`${current.youTube_id}`} opts={YouTubeOptions} />
       </div>
     </div>
   );
