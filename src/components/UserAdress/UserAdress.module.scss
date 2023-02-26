@@ -1,10 +1,12 @@
 .map {
-    margin:50px;
+   
     border-radius: 12px;
        display: flex;
        flex-direction: column;
        justify-content: center;
        align-items: center;
+       visibility: hidden;
+       position: absolute;
     &__input {
         margin: 10px;
             height: 35px;
@@ -31,7 +33,99 @@
 
     &__inputMenu {
         display: flex;
-        flex-direction: row;
         column-gap: 1%;
+        flex-direction: column;
     }
 }
+
+.adressMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:30px;
+    margin-top: 10px;
+
+    &__input {
+        display: flex;
+        gap:20px;
+        white-space: nowrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__setAdrees__result {
+        width:200px;
+    }
+
+    &__setAdrees__resultItem {
+        cursor: pointer;
+    }
+    
+
+    &__header {
+        margin: 5px;
+        font-size: 35px;
+        color: #cb11ab;
+    }
+
+    &__inputMenu {
+        display: flex;
+        flex-direction: row;
+        gap:10px;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    &__input__field{
+        height:20px;
+        outline: none;
+        border:1px solid white; 
+    }
+
+    &__inputHeader {
+        font-family: 'Montserrat', sans-serif;
+        color: #cb11ab;
+        user-select: none;
+    }
+
+    &__setAdrees {
+        margin: 5px;
+        height: 35px;
+        width: 235px;
+    }
+}
+
+.show {
+    visibility:visible ;
+    position: relative;
+    -webkit-animation: scale-in-center 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: scale-in-center 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes scale-in-center {
+    0% {
+      -webkit-transform: scale(0);
+              transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes scale-in-center {
+    0% {
+      -webkit-transform: scale(0);
+              transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      opacity: 1;
+    }
+  }

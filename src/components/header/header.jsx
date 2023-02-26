@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import style from "./header.module.scss";
+import style from "./Header.module.scss";
 import { InputSearch } from "../InputSearch/Input";
 import img from "../../assets/imgs/shopping-cart.png";
 import img2 from "../../assets/imgs/home.png";
 export const Header = () => {
   return (
-    <div className={style.header}>
+    <header className={style.header}>
         <InputSearch />
 
       <div className={style.header__menu}>
@@ -17,6 +17,6 @@ export const Header = () => {
           <img src={img2} className={style.header__home} />
         </Link>
       </div>
-    </div>
+    </header>
   );
 };

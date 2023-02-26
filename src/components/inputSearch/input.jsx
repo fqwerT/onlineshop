@@ -4,9 +4,10 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCurrentReducer } from "../../store/items/itemsSlice";
+
 export const InputSearch = () => {
+
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
   const items = useSelector((state) => state.itemsSlice.items);
   const dispatch = useDispatch();
   const navigate = useNavigate();

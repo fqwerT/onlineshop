@@ -14,17 +14,18 @@ import { setFilteredColor } from "../../store/items/itemsSlice";
 import { setRemoveDuplicates } from "../../store/items/itemsSlice";
 import { setColorsReducer } from "../../store/items/itemsSlice";
 import style from "./itemFilter.module.scss";
+
 export const Filters = () => {
+
   const dispatch = useDispatch();
-  const [filteredPrice, setFilterdPrice] = useState([]);
   const [activeFillter, setActiveFillter] = useState(false);
-  const { items, price, filtered, colors } = useSelector((state) => ({
+  const { items,  filtered, colors } = useSelector((state) => ({
     items: state.itemsSlice.items,
     price: state.itemsSlice.itemsPrice,
     filtered: state.itemsSlice.filteredItems,
     colors: state.itemsSlice.colors,
   }));
-  const [firstItem] = price.slice(0);
+
   const [currentPrice, setCurrentPrice] = useState(5000);
   const arrPrice = items.map((item) => item.price);
   const newPriceArr = arrPrice.sort(function (a, b) {
@@ -33,14 +34,13 @@ export const Filters = () => {
 
   const changePriceValue = (event) => {
     setCurrentPrice(event.target.value);
-    console.log(event.target.value);
   };
   const ref = useRef(null);
   useEffect(() => {
     dispatch(setItemsPriceReducer(newPriceArr));
     dispatch(setColorsReducer());
     dispatch(setRemoveDuplicates());
-  }, [items, filtered]);
+  }, [ filtered]);
 
    useEffect(() => {
     dispatch(setFilteredPrice(currentPrice));
@@ -59,14 +59,11 @@ export const Filters = () => {
     },
     [currentPrice]
   );
-  console.log(price);
 
   const handleShowColorFilters = () => {
-    const elem = ref.current;
     ref.current.classList.toggle(`${style.fillters__show}`);
   };
-  
-  console.log(items)
+
   return (
     <div className={style.fillters}>
       <div className={style.fillters__price}>
@@ -76,7 +73,7 @@ export const Filters = () => {
           </h1>
         )}
         <h1 className={style.fillters__header}>
-          price up to : {currentPrice}₽
+          price: {currentPrice}₽
         </h1>
         <input
           type="range"

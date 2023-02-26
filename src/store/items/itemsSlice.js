@@ -28,14 +28,7 @@ const itemsSlice = createSlice({
     setCurrentReducer(state, action) {
       state.currentItem = action.payload;
     },
-    setIncrementReducer(state, action) {
-      state.quantity = state.quantity + 1;
-    },
-    setDecrementReducer(state, action) {
-      if (state.quantity > 0) {
-        state.quantity = state.quantity - 1;
-      }
-    },
+   
     setItemsPriceReducer(state, action) {
       state.itemsPrice = action.payload;
     },
@@ -58,6 +51,12 @@ const itemsSlice = createSlice({
     setRemoveDuplicates(state, action) {
       state.colors = [...new Set(state.colors)];
     },
+    setRemoveCartItem(state, action) {
+      state.fillterCart = state.fillterCart.filter(
+        (item)=> {
+          action.payload =! item.id -1
+    })
+    }
   },
 });
 
@@ -66,13 +65,12 @@ export const {
   setCartReducer,
   setFillteredReducer,
   setCurrentReducer,
-  setIncrementReducer,
-  setDecrementReducer,
   setItemsPriceReducer,
   setFilteredPrice,
   setChangeItems,
   setFilteredColor,
   setRemoveDuplicates,
   setColorsReducer,
+  setRemoveCartItem,
 } = itemsSlice.actions;
 export default itemsSlice.reducer;

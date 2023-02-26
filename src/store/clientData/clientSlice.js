@@ -21,7 +21,7 @@ const clientSlice = createSlice({
       state.valid = action.payload;
     },
     setAdressReducer(state, action) {
-      state.valid = action.payload;
+      state.adress = action.payload;
     },
   },
 });

@@ -1,6 +1,4 @@
 import React, { useRef } from "react";
-import itemsSlice from "../../store/items/itemsSlice";
-import { Link } from "react-router-dom";
 import style from "./CurrentItem.module.scss";
 import { Header } from "../Header/Header";
 import { useDispatch } from "react-redux";
@@ -10,6 +8,7 @@ import { setFillteredReducer } from "../../store/items/itemsSlice";
 import YouTube from "react-youtube";
 import { YouTubeOptions } from "../../service/youTubeOptions";
 export const CurrentItem = () => {
+  
   const current = useSelector((state) => state.itemsSlice.currentItem);
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.itemsSlice.cart);

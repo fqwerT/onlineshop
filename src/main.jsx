@@ -11,6 +11,7 @@ import { Cart } from "./Pages/Cart/cart";
 import { Order } from "./Pages/Order/Order";
 import { Categories } from "./Pages/Categories/Categories";
 import { ChoosenCategory } from "./components/ChosenCategory/ChoosenCategory";
+import { OrderSuccess } from "./Pages/OrderSuccess/OrderSuccess";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,10 +37,14 @@ const router = createBrowserRouter([
   {
     path: "/ChoosenCatergory",
     element: <ChoosenCategory/>,
+   },
+   {
+    path: "/Succsess",
+    element: <OrderSuccess/>,
    }
 ]);
 
-//не забыть сделать вложенный роут вместо этих(как в тз)
+
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>

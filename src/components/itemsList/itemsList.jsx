@@ -61,10 +61,13 @@ export const Items = () => {
     return dispatch(setFillteredReducer(result));
   };
 
-  const handleClick = (item) => {
+  const handleClick = useCallback((item) => {
     dispatch(setCartReducer(item));
+  },[cart]);
+
+  useEffect(()=>{
     removeDuplicates(cart);
-  };
+  },[items,cart])
 
   const handleInfo = (item) => {
     dispatch(setCurrentReducer(item));

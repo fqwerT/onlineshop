@@ -25,4 +25,20 @@
     &__additionally {
         text-align: center;
     }
+
+    &__btn {
+        background-color: #cb11ab;
+        border: 2px solid #cb11ab;
+        color: white;
+        font-size: 'Roboto';
+        width: 150px;
+        padding: 5px;
+        height: 35px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: 10px;
+        text-decoration: none;
+        white-space: nowrap;
+        border-radius: 12px;
+    }
 }

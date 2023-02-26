@@ -27,16 +27,12 @@ export const ChoosenCategory = () => {
     dispatch(setCategoryItemReducer(results));
   }, [category, items]);
 
-  console.log(filteredCategoriItems);
-
   return (
     <div className={style.Choosen}>
       <Header />
       <div className={style.Choosen__container}>
         <CategoryFilter />
-        {filteredCategoriItems.length == 0 ? (
-          <></>
-        ) : (
+        {filteredCategoriItems.length !== 0 &&
           filteredCategoriItems.map((item) => (
             <div>
               <img
@@ -53,8 +49,7 @@ export const ChoosenCategory = () => {
               <h1>{item.price} ₽</h1>
               <div>About</div>
             </div>
-          ))
-        )}
+          ))}
       </div>
     </div>
   );

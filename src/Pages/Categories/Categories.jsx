@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { setItemsReducer } from "../../store/items/itemsSlice";
 import { Header } from "../../components/Header/Header";
 import { setCategoryReducer } from "../../store/categorySlice/categorySlice";
 import style from "./Categories.module.scss";
 import { useNavigate } from "react-router-dom";
 
-useNavigate;
 export const Categories = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();

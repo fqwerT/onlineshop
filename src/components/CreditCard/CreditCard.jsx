@@ -1,26 +1,20 @@
-import React, { useState, useRef } from "react";
-//import "react-credit-cards/es/styles-compiled.css";
-//import Cards from "react-credit-cards";
+import React, { useState, useRef, useEffect } from "react";
 import style from "./CreditCard.module.scss";
 import { useDispatch } from "react-redux";
 import { setValidReducer } from "../../store/clientData/clientSlice";
 import img from "../../assets/imgs/visa.png";
-export const CreditCard = ({ Name, SurName }) => {
+import { Link } from "react-router-dom";
+export const CreditCard = ({ Name }) => {
   const dispatch = useDispatch();
   const [number, setNumber] = useState("");
   const [name, setName] = useState("");
   const [expiry, setExpiry] = useState("");
   const [cvc, setCvc] = useState("");
-
   const [valid, setValid] = useState(false);
   const [error, setError] = useState("");
   const ref = useRef(null);
   const ref2 = useRef(null);
   const GoBack = () => {
-    dispatch(setValidReducer(false));
-  };
-
-  const Next = () => {
     dispatch(setValidReducer(false));
   };
 
@@ -31,24 +25,26 @@ export const CreditCard = ({ Name, SurName }) => {
     if (e.target.value.length > 16) {
       setValid(false);
       setError("the number field cannot be longer than 16 characters");
-    }
-    if (e.target.value.length == 0) {
+    } else setError("");
+    if (!e.target.value) {
       setValid(false);
       setError("the number field cannot be empty");
-    }
+    } else setError("");
   };
 
   const HandleChangeExpiry = (e) => {
     if (e.target.value.length <= 4) {
-      let newarr = e.target.value.split("");
+      const newarr = e.target.value.split("");
       newarr.splice(2, 0, "/");
-      let stringArr = newarr.join("");
+      const stringArr = newarr.join("");
       setExpiry(stringArr);
-      console.log(expiry);
-    } else {
       setValid(false);
       setError("the expire field cannot be longer than 4 characters");
-    }
+    } else setError("");
+    if (!e.target.value) {
+      setValid(false);
+      setError("the number field cannot be empty");
+    } else setError("");
   };
 
   const onCvcChange = (e) => {
@@ -56,9 +52,13 @@ export const CreditCard = ({ Name, SurName }) => {
     if (e.target.value <= 3) {
       setValid(false);
       setError("the cvc field cannot be longer than 3 characters");
-    }
+    } else setError("");
+
+    if (!e.target.value) {
+      setValid(false);
+      setError("the number field cannot be empty");
+    } else setError("");
   };
-  console.log(cvc);
 
   const setBackCard = () => {
     const elem = ref.current;
@@ -74,7 +74,9 @@ export const CreditCard = ({ Name, SurName }) => {
     elem2.classList.remove(`${style.creditCard__show}`);
   };
 
-  console.log(error);
+  useEffect(() => {
+    console.log(error);
+  }, [error]);
 
   return (
     <div className={style.creditCard}>
@@ -158,7 +160,12 @@ export const CreditCard = ({ Name, SurName }) => {
         <button onClick={GoBack} className={style.creditCard__btn}>
           Go back
         </button>
-        <button className={style.creditCard__btn}> Next</button>
+        {error.length == 0 && (
+          <Link to="/Succsess" className={style.creditCard__btn}>
+            {" "}
+            Next
+          </Link>
+        )}
       </div>
     </div>
   );

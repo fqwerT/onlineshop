@@ -1,0 +1,18 @@
+.message {
+    font-family: 'Monsserat';
+    font-size: 30px;
+    margin: 10px;
+    font-family: 'Montserrat', sans-serif;
+    user-select: none;
+
+    &__img {
+        width: 150px;
+    }
+
+    &__box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
