@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { setFillteredReducer } from "../../store/items/itemsSlice";
 import { useNavigate } from "react-router-dom";
 import { setCurrentReducer } from "../../store/items/itemsSlice";
-import style from "./items.module.scss";
+import style from "./Items.module.scss";
 import { SupaBase__Link } from "../../service/supaBase";
 
 export const Items = () => {
