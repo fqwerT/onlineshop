@@ -28,7 +28,7 @@ const itemsSlice = createSlice({
     setCurrentReducer(state, action) {
       state.currentItem = action.payload;
     },
-   
+
     setItemsPriceReducer(state, action) {
       state.itemsPrice = action.payload;
     },
@@ -52,11 +52,8 @@ const itemsSlice = createSlice({
       state.colors = [...new Set(state.colors)];
     },
     setRemoveCartItem(state, action) {
-      state.fillterCart = state.fillterCart.filter(
-        (item)=> {
-          action.payload =! item.id -1
-    })
-    }
+      state.fillterCart = state.fillterCart.splice(1, action.payload);
+    },
   },
 });
 

@@ -22,7 +22,11 @@ export const Cart = () => {
           <div>Корзина пока пуста...</div>
         ) : (
           <div>
-            {Cart.length !== 0 && <Link to="/Order"  className={style.cart__btn}>Order now</Link> }
+            {Cart.length !== 0 && (
+              <Link to="/Order" className={style.cart__btn}>
+                Order now
+              </Link>
+            )}
             {Cart.map((item) => (
               <div className={style.cart__box} key={item.id}>
                 <div className={style.cart__info} key={item.id}>
@@ -31,16 +35,19 @@ export const Cart = () => {
                     alt={item.name}
                     className={style.cart__img}
                   />
-                  <div className={style.cart__additionally} >
+                  <div className={style.cart__additionally}>
                     <h1>
                       {item.name} / {item.model}
                     </h1>
+                    <button
+                      className={style.cart__btn}
+                      onClick={() => handleRemove(item.id)}
+                    >
+                      Clear cart
+                    </button>
                     <h1>{item.color}</h1>
                   </div>
                 </div>
-                <button onClick={() => handleRemove(item.id)}>
-                  Remove
-                </button>
               </div>
             ))}
           </div>

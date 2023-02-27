@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { setCurrentReducer } from "../../store/items/itemsSlice";
 
 export const InputSearch = () => {
-
   const [searchTerm, setSearchTerm] = useState("");
   const items = useSelector((state) => state.itemsSlice.items);
   const dispatch = useDispatch();
@@ -16,11 +15,9 @@ export const InputSearch = () => {
     setSearchTerm(e.target.value);
     const elem = ref.current;
     ref.current.classList.add(`${style.input__show}`);
-  
+
     if (e.target.value.length == 0) {
       ref.current.classList.remove(`${style.input__show}`);
-     
-     
     }
   };
 
@@ -28,7 +25,7 @@ export const InputSearch = () => {
   const results = !searchTerm
     ? items
     : items.filter((item) =>
-        item.model.toLowerCase().includes(searchTerm.toLocaleLowerCase())
+        item.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())
       );
 
   const handleInfo = (item) => {
